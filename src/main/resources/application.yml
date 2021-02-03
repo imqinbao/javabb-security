@@ -83,4 +83,4 @@ config:
 
 # swagger接口地址(如果用到域名会需要)
 #swagger:
-#host: https://v1.eleadmin.com
+#host: http://www.javabb.cn
