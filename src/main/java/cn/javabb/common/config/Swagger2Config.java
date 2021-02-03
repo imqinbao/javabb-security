@@ -40,9 +40,9 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("API文档")
-                .description("")
-                .version("0.1")
+                .title("Javabb-Security接口文档")
+                .description("Javabb-Security接口文档")
+                .version("1.0")
                 .termsOfServiceUrl("")
                 .build();
     }

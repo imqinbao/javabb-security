@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : alimysql
  Source Server Type    : MySQL
- Source Server Version : 50730
- Source Host           : localhost:3306
+ Source Server Version : 50719
+ Source Host           : 59.110.236.115:3306
  Source Schema         : javabb-security
 
  Target Server Type    : MySQL
- Target Server Version : 50730
+ Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 03/02/2021 20:56:09
+ Date: 03/02/2021 21:40:40
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,7 @@ CREATE TABLE `sys_dictionary`  (
   `create_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `update_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
   PRIMARY KEY (`dict_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dictionary
@@ -56,7 +56,7 @@ CREATE TABLE `sys_dictionary_data`  (
   PRIMARY KEY (`dict_data_id`) USING BTREE,
   INDEX `dict_id`(`dict_id`) USING BTREE,
   CONSTRAINT `sys_dictionary_data_ibfk_1` FOREIGN KEY (`dict_id`) REFERENCES `sys_dictionary` (`dict_id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典项' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典项' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dictionary_data
@@ -84,11 +84,14 @@ CREATE TABLE `sys_login_record`  (
   `create_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '操作时间',
   `update_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '登录日志' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '登录日志' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_login_record
 -- ----------------------------
+INSERT INTO `sys_login_record` VALUES (1, 'adminff', 'Windows 10', 'Windows 10', 'Chrome 8', '192.168.1.3', 1, '账号或密码错误', '2021-02-03 21:38:40', '2021-02-03 21:38:40');
+INSERT INTO `sys_login_record` VALUES (2, 'admin', 'Windows 10', 'Windows 10', 'Chrome 8', '192.168.1.3', 1, '账号或密码错误', '2021-02-03 21:38:59', '2021-02-03 21:38:59');
+INSERT INTO `sys_login_record` VALUES (3, 'admin', 'Windows 10', 'Windows 10', 'Chrome 8', '192.168.1.3', 0, NULL, '2021-02-03 21:40:10', '2021-02-03 21:40:10');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -112,7 +115,7 @@ CREATE TABLE `sys_menu`  (
   `create_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `update_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -205,7 +208,7 @@ CREATE TABLE `sys_oper_record`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
   CONSTRAINT `sys_oper_record_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oper_record
@@ -231,7 +234,7 @@ CREATE TABLE `sys_organization`  (
   PRIMARY KEY (`organization_id`) USING BTREE,
   INDEX `leader_id`(`leader_id`) USING BTREE,
   CONSTRAINT `sys_organization_ibfk_1` FOREIGN KEY (`leader_id`) REFERENCES `sys_user` (`user_id`) ON DELETE SET NULL ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '组织机构' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '组织机构' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_organization
@@ -384,7 +387,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$QbAbiMqWF/1g4K6CMxJD8.qZPTcWQKoQaylnJS3o55cUq/Dx8/vem', '管理员', 'https://gitee.com/imqinbao/img-bed/raw/master/avatar/20210203205259.jpeg', 1, '12345678901', '', 0, NULL, NULL, NULL, '遗其欲，则心静！', 1, 0, 0, '2020-01-13 14:43:52', '2021-02-03 20:55:37');
+INSERT INTO `sys_user` VALUES (1, 'admin', '$2a$10$miNB37Sp1d7DDInDFstj8Oz6kqwq8gtmIKXKigqOOBQQp8xsRoyVu', '管理员', 'https://gitee.com/imqinbao/img-bed/raw/master/avatar/20210203205259.jpeg', 1, '12345678901', '', 0, NULL, NULL, NULL, '遗其欲，则心静！', 1, 0, 0, '2020-01-13 14:43:52', '2021-02-03 21:40:02');
 INSERT INTO `sys_user` VALUES (2, 'user01', '$2a$10$y3j0Bnn4cMOErMLv31LUw.Drs/xs1peDQwT7YYHJbFX6xGDQcXUaK', '用户一', NULL, 2, '12345678902', NULL, 0, NULL, NULL, NULL, NULL, 1, 0, 0, '2020-09-15 17:49:37', '2020-09-15 18:02:18');
 INSERT INTO `sys_user` VALUES (3, 'user02', '$2a$10$fF2qbzA1.zIOUZpedxtvoubQ9doxlSNSunGQLwYxnvSqM8Wx6AeGC', '用户二', NULL, 1, '12345678903', NULL, 0, NULL, NULL, NULL, NULL, 1, 0, 0, '2020-09-15 17:50:20', '2020-09-15 18:02:19');
 INSERT INTO `sys_user` VALUES (4, 'user03', '$2a$10$iP1vojXrDgjTaU6ZY3dGfefXGmyftJbPhTuU7cWBxkNI3w20WwZOW', '用户三', NULL, 2, '12345678904', NULL, 0, NULL, NULL, NULL, NULL, 1, 0, 0, '2020-09-15 17:50:51', '2020-09-15 18:02:19');
