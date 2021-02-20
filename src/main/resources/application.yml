@@ -58,7 +58,7 @@ spring:
 
 # Mybatis-plus配置
 mybatis-plus:
-  mapper-locations: classpath:cn/javabb/**/*Mapper.xml
+  mapper-locations: classpath*:cn/javabb/**/*Mapper.xml
   typeAliasesPackage: cn.javabb.**.entity
   global-config:
     id-type: 0
